@@ -1,0 +1,36 @@
+{
+  "name": "the-new-sandbox",
+  "version": "0.4.0",
+  "description": "Sandbox site featuring typical Apostrophe features",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "P'unk Avenue",
+  "license": "BSD",
+  "dependencies": {
+    "appy": "0.x",
+    "uploadfs": "0.x",
+    "nunjucks": "0.1.x",
+    "apostrophe": "0.x",
+    "apostrophe-rss": "0.x",
+    "apostrophe-twitter": "0.x",
+    "apostrophe-pages": "0.x",
+    "apostrophe-blog": "0.x",
+    "apostrophe-events": "0.x",
+    "apostrophe-snippets": "0.x",
+    "apostrophe-map": "0.x",
+    "apostrophe-sections": "0.x",
+    "apostrophe-people": "0.x",
+    "apostrophe-site": "0.x",
+    "underscore": "~1.4.4",
+    "extend": "~1.1.3",
+    "optimist": "~0.5.2",
+    "apostrophe-groups": "0.x",
+    "async": "~0.2.9"
+  }
+}

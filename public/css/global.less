@@ -1,0 +1,55 @@
+// Setup a customizable background-image style for some pages.
+.background
+{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1; //The point here is to set the background behind everything else.
+  overflow:hidden;
+}
+
+// Setup some easily applicable body classes to control branding
+
+.white-logo
+{
+  .branding
+  {
+    img
+    {
+      display: none;
+      &.white-logo
+      {
+        display: block;
+      }
+    }
+  }
+}
+.dark-logo
+{
+  .branding
+  {
+    img
+    {
+      display: none;
+      &.dark-logo
+      {
+        display: block;
+      }
+    }
+  }
+}
+.word-logo
+{
+  .branding
+  {
+    img
+    {
+      display: none;
+      &.word-logo
+      {
+        display: block;
+      }
+    }
+  }
+}
+

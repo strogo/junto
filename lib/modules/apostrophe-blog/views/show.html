@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% include "blogMacros.html" %}
+
+{% block bodyClass %}{{ super() }} apos-blog-post-page white-logo{% endblock %}
+
+{# Article specific title tag, for Facebook, SEO, etc. #}
+{%- block title -%}
+  {{ siteTitle }} &ndash; {{ item.title | e }}
+{%- endblock -%}
+
+{# Facebook image, so it doesn't hoover up images from the dropdown menus #}
+{# Works only if you specify an absolute URL for uploadsUrl in data/local.js #}
+
+{% set firstImage = aposAreaFindFile({ area: item.areas.thumbnail, group: 'images'}) or
+  aposAreaFindFile({ area: item.areas.body, group: 'images' }) %}
+
+{% block extraHead %}
+  {% if firstImage %}
+    <meta property="og:image" content="{{ aposFilePath(firstImage) }}" />
+  {% endif %}
+{% endblock %}
+
+{% block background %}
+  {{ aposSingleton({slug: item.slug + ":thumbnail", type:'slideshow',  edit: false, area: item.areas.thumbnail }) }}
+{% endblock %}
+
+{% block mainContent %}
+  <div class="column apos-area-sidebar">
+    {{ aposArea({ slug: slug + ":sidebar", area: page.areas.sidebar, edit: edit }) }}
+  </div>
+
+  <div class="column-2 blog-posts">
+    {{ renderBlogPost(item, page.url) }}
+  </div>
+
+{% endblock %}

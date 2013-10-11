@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block bodyClass %}{{ super() }} search-page{% endblock %}
+
+
+
+{% block mainContent %}
+
+  {# Form refers to self via "" #}
+  <form class="apos-search-form" method="GET" action="">
+    Search For: <input name="q" value="{{ q | e }}" /> <input type="submit" />
+  </form>
+
+  {% if search %}
+    <h3 class="search-results-header">Search Results</h3>
+    <p class="search-options">
+      <input type="checkbox" name="page" checked class="apos-search-filter" /> Pages
+      <input type="checkbox" name="mapLocation" checked class="apos-search-filter" /> Places
+      <input type="checkbox" name="blogPost" checked class="apos-search-filter" /> Articles
+    </p>
+    <ul class="search-results">
+      {% for result in search %}
+        {% if result.type %}
+          <li data-type="{{ result.type }}" class="apos-result apos-result-{{ result.type }}">
+            <h4 class="search-result-title">
+              <a href="/apos-pages/search-result?slug={{ result.slug }}">{{ result.title | e }}</a></h4>
+            <p class="search-result-text">{{ result.searchSummary | truncate(400) }}</p>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+{% endblock %}

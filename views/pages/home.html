@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block bodyClass %}{{ super() }} home-page white-logo{% endblock %}
+
+{# breadcrumbs are excluded from the homepage #}
+{% block breadcrumbs %}
+{% endblock %}
+
+{% block background %}
+  {{aposSingleton({slug: slug + ":background", type: "slideshow", area: page.areas.background, edit: edit, limit: 1})}}
+{% endblock %}
+
+{% block mainContent %}
+
+
+{% endblock %}

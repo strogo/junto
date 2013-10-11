@@ -1,0 +1,79 @@
+{% include 'pageMacros.html' %}
+
+{# This serves as our base template; it is rendered inside of the 'apos-refreshable' class in outerLayout.html. #}
+{# This is where we declare the main blocks that our layout is composed of, e.g. header, main, footer, etc. #}
+{# Depending on your needs this is where you would create blocks that you can hook into from other templates, #}
+{# e.g. the extraBreadcrumbs block within the breadcrumbs block. #}
+
+{# DO NOT REMOVE THESE COMMENTS. We parse these for outerLayout and refresh operations #}
+<!-- APOS-BODY-CLASS {% block bodyClass %}{% endblock %} -->
+<!-- APOS-TITLE {% block title %}{% endblock %} -->
+<!-- APOS-EXTRA-HEAD {% block extraHead %}{% endblock %} -->
+<div class="background">
+  {% block background %}
+  {% endblock %}
+</div>
+{% block header %}
+  <div class="block header">
+    <div class="inner">
+
+      <div class="branding">
+        <a href="/">
+          <img class="white-logo" src="/images/junto-logo-white.png">
+          <img class="dark-logo" src="/images/junto-logo-dark.png">
+          <img class="word-logo" src="/images/junto-logo-word.png">
+        </a>
+      </div>
+
+      <div class="nav">
+        <ul>
+          {% for tab in page.tabs %}
+            {% if tab.slug == page.slug %}
+              <li class="current-page"><a href="{{tab.url}}">{{tab.title}}</li>
+            {% else %}
+              <li><a href="{{tab.url}}">{{tab.title}}</a></li>
+            {% endif %}
+          {% endfor %}
+          <li class="twitter"><a href="http://twitter.com/thejunto" target="blank">Twitter</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block main %}
+  <div class="block main-content">
+    <div class="inner clearfix">
+
+      {# most content will be just fine sitting within our 'block' class, but we always #}
+      {# have the option to override the 'main' block if we want a little more control. #}
+      {% block mainContent %}
+      {% endblock %}
+
+    </div>
+  </div>
+{% endblock %}
+
+{% block extraContent %}
+{% endblock %}
+
+{# notice that this footer uses global areas: if we want editable content to appear on every page #}
+{# that inherits this one we want to use the global.areas object instead of the page.areas object. #}
+{% block footerBody %}
+  <footer class="footer">
+    {% block footer %}
+    <div class="major block">
+      <div class="inner clearfix">
+        <form name="updates">
+          <input type="email">
+          <input type="submit" value="updates">
+        </form>
+        <img src="junto-logo-white.png">
+      </div>
+    </div>
+    {% endblock %}
+  </footer>
+{% endblock %}
+
