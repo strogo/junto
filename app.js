@@ -29,8 +29,19 @@ var site = require('apostrophe-site')({
 
   // These are the modules we want to bring into the project.
   modules: {
-    'apostrophe-blog':     { },
+    'apostrophe-blog': {
+      addFields: [
+        {
+          name: '_author',
+          type: 'joinByOne',
+          withType: 'person',
+          idField: 'authorId'
+        }
+      ]
+    },
     'apostrophe-events':   { },
+    'apostrophe-groups':   { },
+    'apostrophe-people':   { },
     'apostrophe-sections': { }
   },
 

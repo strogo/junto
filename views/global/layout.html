@@ -17,7 +17,7 @@
   <div class="block header">
     <div class="inner">
 
-      <div class="branding">
+      <div class="branding column">
         <a href="/">
           <img class="white-logo" src="/images/junto-logo-white.png">
           <img class="dark-logo" src="/images/junto-logo-dark.png">
@@ -25,13 +25,13 @@
         </a>
       </div>
 
-      <div class="nav">
-        <ul>
+      <div class="nav column-two">
+        <ul class="sans-serif">
           {% for tab in page.tabs %}
             {% if tab.slug == page.slug %}
-              <li class="current-page"><a href="{{tab.url}}">{{tab.title}}</li>
+              <li class="current-page"><a class="sans-serif" href="{{tab.url}}">{{tab.title}}</a></li>
             {% else %}
-              <li><a href="{{tab.url}}">{{tab.title}}</a></li>
+              <li><a class="sans-serif" href="{{tab.url}}">{{tab.title}}</a></li>
             {% endif %}
           {% endfor %}
           <li class="twitter"><a href="http://twitter.com/thejunto" target="blank">Twitter</a></li>
@@ -40,6 +40,8 @@
 
     </div>
   </div>
+  {% block extraHeader %}
+  {% endblock %}
 {% endblock %}
 
 

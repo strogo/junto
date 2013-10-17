@@ -22,15 +22,22 @@
 {% endblock %}
 
 {% block background %}
-  {{ aposSingleton({slug: item.slug + ":thumbnail", type:'slideshow',  edit: false, area: item.areas.thumbnail }) }}
+  {{ aposSingleton({slug: item.slug + ":thumbnail", type:'slideshow',  edit: false, area: item.areas.thumbnail }) }}=
+{% endblock %}
+
+{% block extraHeader %}
+  <div class="block blog-title">
+    <div class="inner">
+      <h2>{{item.title}}</h2>
+      {{aposLog(item)}}
+      <h4 class="sans-serif"> <span>&mdash;&mdash;</span> {{item._author.firstName}} {{item._author.lastName}}</h4>
+    </div>
+  </div>
 {% endblock %}
 
 {% block mainContent %}
-  <div class="column apos-area-sidebar">
-    {{ aposArea({ slug: slug + ":sidebar", area: page.areas.sidebar, edit: edit }) }}
-  </div>
 
-  <div class="column-2 blog-posts">
+  <div class="block blog-posts">
     {{ renderBlogPost(item, page.url) }}
   </div>
 

@@ -1,0 +1,45 @@
+{% include 'pagerMacros.html' %}
+
+{% macro renderBlogPost(item, pageUrl) %}
+  <article class="apos-blog-post">
+    <div class="apos-blog-post-body">{{ aposArea({ area: item.areas.body }) }}</div>
+
+
+    {# We're getting a little fancy with our semantic items. #}
+    <footer class="block">
+      <div class="inner">
+
+        {# Display the author's image. #}
+        <div class="column">
+          <img class="author">
+        </div>
+
+        {# Now tell us a little about the author. #}
+        <div class="column2">
+          <p>Here's an author's bio.</p>
+        </div>
+
+    </footer>
+  </article>
+{% endmacro %}
+
+{% macro renderBlogPosts(items, pageUrl, aposFilePath) %}
+   {% if items %}
+    {% for item in items %}
+      <article class="apos-blog-post">
+        <a href="{{pageUrl}}/{{item.slug}}"> {# We want the whole article to be a link.#}
+          <div class="column">
+            <img src="{{ aposFilePath(aposAreaFindFile({ area: item.areas.thumbnail}), { size: 'one-half' }) }}">
+          </div>
+          <div class="column2">
+            <header>
+              {{aposLog(item)}}
+              <p class="sans-serif">{{item._author.firstName}} {{item._author.lastName}}, {{ item.publicationDate | date ('MMMM D, YYYY') }}</p>
+            </header>
+            {{ aposAreaPlaintext({ area: item.areas.body, truncate: 200 }) }}
+          </div>
+        </a>
+      </article>
+    {% endfor %}
+  {% endif %}
+{% endmacro %}
