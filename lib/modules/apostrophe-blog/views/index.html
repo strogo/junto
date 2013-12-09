@@ -16,7 +16,7 @@
 
 {% block mainContent %}
 
-  <div class="block">
+  <div class="block stretch">
 
     {% set filteredFeed = here({ 'feed': 'rss' }) %}
     {% set fullFeed = page.url | build({ 'feed': 'rss' }) %}

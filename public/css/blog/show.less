@@ -1,0 +1,124 @@
+/* ---------------------------------
+------------------------------------
+ { Blog Show Styles for junto.org }
+------------------------------------
+----------------------------------*/
+
+.apos-blog-post-page
+{
+  // There's some serious templating differences
+  // when using the blog show page. This accounts
+  // for the increased amount of styles here.
+
+  // We'll need to desaturate the background-image. This will be neat.
+  .background
+  {
+    img.apos-slideshow-image
+    {
+      .grayscale;
+    }
+  }
+  .branding
+  {
+    margin: 0 auto;
+    width: 100%; //Overriding typical column width;
+    img.white-logo
+    {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  .nav
+  {
+    display: none;
+
+  }
+
+  // .block
+  // {
+  //   .inner
+  //   {
+  //     max-width: 720px !important;
+  //   }
+  // }
+  .blog-title
+  {
+    clear: both;
+    min-height: 600px;
+    h2
+    {
+      text-align: left;
+      font-size: 600%;
+      line-height: 1.08;
+      color: white;
+    }
+    h4
+    {
+      color: white;
+      span
+      {
+        letter-spacing: -2px;
+        margin-right: 10px;
+      }
+    }
+  }
+  .main-content
+  {
+    background: white;
+    .block.blog-posts
+    {
+      padding: 0;
+    }
+    // What currently lives in the Jot editor
+    .apos-blog-post-body
+    {
+
+      // Style any widgets in the blog body
+      .apos-widget
+      {
+        &.apos-pullquote
+        {
+          .pullquotes;
+        }
+        &.apos-slideshow
+        {
+          width: 50%;
+          margin-left: -25%;
+          float: left;
+          clear: none;
+          padding: 20px;
+        }
+      }
+
+      // Regular old text blocks in Jot
+      .apos-content>div:not(.apos-slideshow):not(.apos-widget),
+      .apos-editable>div:not(.apos-slideshow):not(.apos-widget)
+      {
+        // This will account for a narrower reading column and
+        // typical paragraph padding.
+        padding: 10px 8% 30px;
+        &:first-child
+        {
+          &:first-letter
+          {
+            color: red;
+          }
+        }
+      }
+      .apos-content>div:not(.apos-widget):first-child:first-letter
+      {
+        color: red;
+      }
+
+      // Some special styles for typography on the blog page.
+      h3
+      {
+        .titular;
+      }
+      h4, h5, h6
+      {
+        margin-left: 8%;
+      }
+    }
+  }
+}

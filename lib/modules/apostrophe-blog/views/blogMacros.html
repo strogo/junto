@@ -33,10 +33,11 @@
           </div>
           <div class="column2">
             <header>
-              {{aposLog(item)}}
-              <p class="sans-serif">{{item._author.firstName}} {{item._author.lastName}}, {{ item.publicationDate | date ('MMMM D, YYYY') }}</p>
+              <p class="sans-serif">{{item._author.firstName | e}} {{item._author.lastName | e}}, {{ item.publicationDate | date ('MMMM D, YYYY') }}</p>
+              <h3>{{item.title | e}}</h3>
             </header>
-            {{ aposAreaPlaintext({ area: item.areas.body, truncate: 200 }) }}
+            {{ aposAreaPlaintext({ area: item.areas.body, truncate: 180 }) }}
+            <img src="/images/junto-arrow.png" class="link-arrow">
           </div>
         </a>
       </article>
