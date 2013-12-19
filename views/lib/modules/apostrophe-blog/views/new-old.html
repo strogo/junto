@@ -1,0 +1,26 @@
+{% include 'snippetMacros.html' %}
+<div class="apos-modal apos-template {% block class %}apos-new-blog-post{% endblock %}">
+  <h3>{% block label %}New Article{% endblock %}</h3>
+  {% block topButtons %}
+  {% endblock %}
+  <div class="apos-modal-body">
+    <form>
+      {{ snippetText('title', 'Title') }}
+      {# Slugs become editable later, allow the edit template to add them here #}
+      {% block slug %}{% endblock %}
+      {{ snippetSelective('_author', 'Author') }}
+      {{ snippetTags('tags', 'Tags (comma-separated)') }}
+      {# TODO macroize this as snippetBoolean #}
+
+      {{ snippetBoolean('published', 'Published') }}
+      {{ snippetText('publication-date', 'Publication Date') }}
+      {{ snippetText('publication-time', 'Publication Time') }}
+      {# The real work for these is in main.js, just get placeholders into the form #}
+      {{ snippetSingleton('thumbnail', 'Thumbnail') }}
+      {{ snippetArea('body', 'Body') }}
+    </form>
+  </div>
+  {% block buttons %}
+  {{ snippetNewButtons() }}
+  {% endblock %}
+</div>

@@ -1,0 +1,40 @@
+{% if options.homepage %}
+  {% for snippet in item._snippets %}
+     <article class="apos-featured-post apos-blog-post">
+        <a href="{{ snippet.url }}">
+        <p class="sans-serif">{{snippet._author.firstName | e}} {{snippet._author.lastName | e}} asks</p>
+        <h2>{{ snippet.title | e }}</h2>
+            {{ snippet.tagLine }}
+            <img src="/images/junto-arrow-white.png" class="link-arrow">
+        </a>
+     </article>
+  {% endfor %}
+{% elif options.homestream %}
+  {% for snippet in item._snippets %}
+     <article class="apos-featured-post apos-blog-post">
+         <a href="{{snippet.url}}">
+             <p class="date">{{ snippet.publicationDate | date ('MMMM Do') }}</p>
+             <p>{{snippet.title | e}}</p>
+         </a>
+     </article>
+  {% endfor %}
+{% else %}
+  {% for snippet in item._snippets %}
+      <article class="apos-blog-post">
+      <a href="{{snippet.url}}">
+          <div class="column">
+              {{ aposSingleton({slug: snippet.slug + ":thumbnail", type:'slideshow',  edit: false, area: snippet.areas.thumbnail }) }}
+          </div>
+          <div class="column2">
+              <header>
+                  <p class="sans-serif">{{snippet._author.firstName | e}} {{snippet._author.lastName | e}}, {{ snippet.publicationDate | date ('MMMM D, YYYY') }}</p>
+                  <h3>{{snippet.title | e}}</h3>
+              </header>
+              {{ aposAreaPlaintext({ area: snippet.areas.body, truncate: 180 }) }}
+              <img src="/images/junto-arrow.png" class="link-arrow">
+          </div>
+      </a>
+  </article>
+  {% endfor %}
+
+{% endif %}

@@ -6,11 +6,24 @@
 {% block breadcrumbs %}
 {% endblock %}
 
+{% block hero %}
+{% endblock %}
+
 {% block background %}
-  {{aposSingleton({slug: slug + ":background", type: "slideshow", area: page.areas.background, edit: edit, limit: 1})}}
+  {{ aposSingleton({slug: slug + ":homethumbnail", area: page.areas.homebackground, edit:edit, type: 'slideshow' }) }}
 {% endblock %}
 
 {% block mainContent %}
+  <div class="block hero hero-home">
+    <div class="inner">
+      {{ aposSingleton({ slug: slug + ':homefeatured', area: page.areas.homefeatured, edit:edit, type: 'blog', homepage: true }) }}
+    </div>
+  </div>
 
+  <div class="block home-content">
+      <div class="inner">
+         {{ aposSingleton({ slug: slug + ':homeStream', area: page.areas.homeStream, edit:edit, type: 'blog', homepage: false, homestream: true  }) }}
+      </div>
+  </div>
 
 {% endblock %}
